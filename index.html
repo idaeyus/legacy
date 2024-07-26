@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idaeyus</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 3em;
+        }
+        p {
+            margin-bottom: 40px;
+            font-size: 1.5em;
+        }
+        .buttons {
+            display: flex;
+            gap: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            border: 2px solid #fff;
+            background: none;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .button:hover {
+            background-color: #fff;
+            color: #000;
+        }
+        .cursor-image {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            pointer-events: none;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Idaeyus</h1>
+    <p>Building a community of developers to open source everything</p>
+    <div class="buttons">
+        <button class="button" onclick="viewProjects()">View Projects</button>
+        <button class="button" onclick="viewSocials()">Socials</button>
+    </div>
+
+    <script>
+        const cursorImageUrls = [
+            'https://coin-images.coingecko.com/coins/images/29850/large/pepe-token.jpeg?1696528776',
+            'https://ichef.bbci.co.uk/news/480/cpsprodpb/16620/production/_91408619_55df76d5-2245-41c1-8031-07a4da3f313f.jpg.webp',
+            'https://images.cnbctv18.com/wp-content/uploads/2023/04/pepe-token.jpg?impolicy=website&width=400&height=300',
+            'https://pbs.twimg.com/profile_images/1285384386771394560/1kSxAdMB_400x400.jpg',
+            'https://i.guim.co.uk/img/media/8c7f4fe66d305fb86fc3246dd47a9c06d216f7ec/0_139_1268_761/master/1268.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=f27fa05d2f7629655beafeb9248c7647',
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBXqsYHPhXqfeOiAhvBt3UX31CWZpMOBpqDg&s',
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk3BEiUjewgdlaP0T1JRZXBbeB4RjAXnz_Tg&s',
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8-NieSuqrxhvIp5a618Zk7w39Q4pKXCl4Tj6fJdRWW9Y4JKa1jwQlGGNa6tiXLDtVcLA&usqp=CAU',
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-gTxdqYI9_Z_qq9-rPQ00byI0O7uiqMa5Dw&s'
+        ];
+
+        let cursorImage = document.createElement('img');
+        cursorImage.classList.add('cursor-image');
+        document.body.appendChild(cursorImage);
+
+        let lastImageIndex = -1;
+
+        document.addEventListener('mousemove', (e) => {
+            cursorImage.style.left = e.clientX + 'px';
+            cursorImage.style.top = e.clientY + 'px';
+        });
+
+        document.addEventListener('mouseover', (e) => {
+            let newIndex;
+            do {
+                newIndex = Math.floor(Math.random() * cursorImageUrls.length);
+            } while (newIndex === lastImageIndex);
+            lastImageIndex = newIndex;
+            cursorImage.src = cursorImageUrls[newIndex];
+            cursorImage.style.display = 'block';
+        });
+
+        document.addEventListener('mouseout', () => {
+            cursorImage.style.display = 'none';
+        });
+
+        function viewProjects() {
+            window.location.href = 'https://github.com/idaeyus';
+        }
+
+        function viewSocials() {
+            window.location.href = 'https://linktr.ee/idaeyus';
+        }
+    </script>
+</body>
+</html>
